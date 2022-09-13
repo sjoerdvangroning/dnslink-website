@@ -69,12 +69,15 @@ You _can_ use any DNS resolution tool, such as `dig`, to lookup `TXT` records fo
 
 ### Record Format
 
-DNSLink records are of the form:
+DNSLink records are of one of the forms:
 
 ```ini
 dnslink=/<namespace>/<identifier>
 ```
-
+or 
+```ini
+dnslink=URI
+```
 
 - The prefix `dnslink=` signals that the `TXT` record in question is a DNSLink. This is
   important as `TXT` records are used for many purposes that DNSLink should not interfere with.
@@ -85,10 +88,21 @@ dnslink=/<namespace>/<identifier>
 
 #### DNSLink Record Example
 
-In the example below, the `namespace` is `ipfs` and `identifier` is the IPFS [CID][] `bafy...cjze`.
+In the example below, the `namespace` is `ipfs` and `content identifier` is the IPFS [CID][] `bafy...cjze`.
 
 ```ini
 dnslink=/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze
+```
+In the example below, the `protocol` is `https` and `content identifier` is the URL pod.solid.tld/user/name/projects/briljantidea/website
+
+```ini
+dnslink=https://pod.solid.tld/user/name/projects/briljantidea/website
+```
+
+In the example below, the `protocol` is `dat` and `content identifier` is the 778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639/dat_intro.gif
+
+```ini
+dnslink=dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639/dat_intro.gif
 ```
 
 ### `_dnslink` subdomain
